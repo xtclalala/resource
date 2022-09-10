@@ -1,0 +1,12 @@
+{
+  "name": "wails-demo",
+  "outputfilename": "wails-demo.exe",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm build",
+  "frontend:dev:watcher": "pnpm dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "yuyt",
+    "email": "yuyt@qaics.com"
+  }
+}
