@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       // 配置导包使用的快捷方式
       '@': resolve('./src'),
+      '#': resolve('./types'),
     },
   },
 })

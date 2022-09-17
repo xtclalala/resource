@@ -1,10 +1,27 @@
 <script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { HelloWorld } from './components'
+import YLayout from '@/layout'
+import { zhCN, lightTheme } from 'naive-ui'
 </script>
 
 <template>
-  <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png"/>
-  <HelloWorld/>
+  <n-config-provider :theme="lightTheme" :locale="zhCN">
+    <!--    <n-theme-editor>-->
+    <n-global-style />
+    <n-loading-bar-provider>
+      <n-message-provider>
+        <n-dialog-provider>
+          <n-notification-provider>
+            <YLayout>
+              <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png" />
+              <HelloWorld />
+            </YLayout>
+          </n-notification-provider>
+        </n-dialog-provider>
+      </n-message-provider>
+    </n-loading-bar-provider>
+    <!--    </n-theme-editor>-->
+  </n-config-provider>
 </template>
 
 <style>

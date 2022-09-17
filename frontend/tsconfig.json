@@ -10,17 +10,38 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "esModuleInterop": true,
+    "noLib": false,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
+    "baseUrl": "./",
+    "allowJs": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "types": ["vite/client", "naive-ui/volar", "./types"],
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": true,
     "lib": [
       "esnext",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "#*": ["./types/*"]
+    },
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "types/*.d.ts",
+    "node_modules/@types/node/globals.d.ts"
   ],
+  "exclude": ["node_modules", "dist", "**/*.js"],
   "references": [
     {
       "path": "./tsconfig.node.json"

@@ -13,6 +13,7 @@
     "crypto-js": "^4.1.1",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.31.0",
+    "pinia": "^2.0.14",
     "vfonts": "^0.0.3",
     "vue-router": "^4.0.13"
   },
