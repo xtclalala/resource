@@ -1,6 +1,6 @@
 {
   "name": "wails-demo",
-  "outputfilename": "wails-demo.exe",
+  "outputfilename": "y1tRes.exe",
   "frontend:install": "pnpm install",
   "frontend:build": "pnpm build",
   "frontend:dev:watcher": "pnpm dev",
