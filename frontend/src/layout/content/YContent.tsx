@@ -1,11 +1,23 @@
 import { defineComponent } from 'vue'
 import { NLayoutContent } from 'naive-ui'
 
+const PropsType = {
+  contentStyle: {
+    type: String,
+    default: undefined,
+  },
+  embedded: {
+    type: Boolean,
+    default: false,
+  },
+}
+
 export default defineComponent({
   name: 'YContent',
-  setup(_, { slots }) {
+  props: PropsType,
+  setup(props, { slots }) {
     return () => (
-      <NLayoutContent content-style="padding: 12px; min-height: 80vh" embedded>
+      <NLayoutContent content-style={props.contentStyle} embedded={props.embedded}>
         {slots.default && slots.default()}
       </NLayoutContent>
     )

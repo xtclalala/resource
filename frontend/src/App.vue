@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { HelloWorld } from './components'
-import YLayout from '@/layout'
+import YLayout from '@/layout/YLayout'
 import { zhCN, lightTheme } from 'naive-ui'
 </script>
 
