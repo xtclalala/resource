@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { HelloWorld } from './components'
 import YLayout from '@/layout/YLayout'
+import Workbench from '@/views/Workbench'
 import { zhCN, lightTheme } from 'naive-ui'
 </script>
 
@@ -13,8 +14,9 @@ import { zhCN, lightTheme } from 'naive-ui'
         <n-dialog-provider>
           <n-notification-provider>
             <YLayout>
-              <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png" />
-              <HelloWorld />
+              <!--              <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png" />-->
+              <!--              <HelloWorld />-->
+              <Workbench />
             </YLayout>
           </n-notification-provider>
         </n-dialog-provider>
@@ -23,17 +25,3 @@ import { zhCN, lightTheme } from 'naive-ui'
     <!--    </n-theme-editor>-->
   </n-config-provider>
 </template>
-
-<style>
-#logo {
-  display: block;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  padding: 10% 0 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-origin: content-box;
-}
-</style>

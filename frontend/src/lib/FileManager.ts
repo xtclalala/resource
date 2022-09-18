@@ -1,0 +1,4 @@
+export class FileManager {
+    //
+    constructor() {}
+}
