@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"github.com/radovskyb/watcher"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
 	"os"
+	gorunrime "runtime"
 )
 
 // App struct
@@ -76,11 +76,6 @@ func (a *App) startup(ctx context.Context) {
 	}()
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
-}
-
 func (a *App) DirExists(path string) bool {
 	a.err = ""
 	dstat, err := os.Stat(path)
@@ -89,4 +84,8 @@ func (a *App) DirExists(path string) bool {
 		return false
 	}
 	return dstat.IsDir()
+}
+
+func (a *App) Os() string {
+	return gorunrime.GOOS
 }

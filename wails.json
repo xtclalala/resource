@@ -1,5 +1,5 @@
 {
-  "name": "wails-demo",
+  "name": "FileResourceManager",
   "outputfilename": "y1tRes.exe",
   "frontend:install": "pnpm install",
   "frontend:build": "pnpm build",

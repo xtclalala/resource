@@ -8,29 +8,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25",
     "@vicons/ionicons5": "^0.12.0",
     "crypto-js": "^4.1.1",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.31.0",
     "pinia": "^2.0.14",
+    "shortid": "^2.2.16",
     "vfonts": "^0.0.3",
+    "vue": "^3.2.25",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9",
-    "vue-tsc": "^0.34.7",
     "@babel/types": "^7.17.10",
     "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.13.0",
+    "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "eslint": "8.10.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-vue": "8.5.0",
     "prettier": "^2.5.1",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.7"
   }
 }

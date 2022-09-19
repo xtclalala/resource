@@ -21,7 +21,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "types": ["vite/client", "naive-ui/volar", "./types"],
+    "types": ["vite/client", "naive-ui/volar"],
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
     "lib": [
