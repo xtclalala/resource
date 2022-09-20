@@ -1,34 +1,26 @@
-import { defineComponent } from 'vue'
+import { defineComponent, Suspense } from 'vue'
 import { NLayoutSider } from 'naive-ui'
+import SiderMenu from '@/views/SiderMenu'
 
 const PropsType = {
-  contentStyle: {
-    type: String,
-    default: undefined,
-  },
-  nativeScrollbar: {
-    type: Boolean,
-    default: false,
-  },
-  bordered: {
-    type: Boolean,
-    default: false,
-  },
+    ...NLayoutSider.props,
 }
 
 export default defineComponent({
-  name: 'YSider',
+    name: 'YSider',
 
-  props: PropsType,
+    props: PropsType,
 
-  setup(props) {
-    return () => (
-      <NLayoutSider
-        content-style={props.contentStyle}
-        native-scrollbar={props.nativeScrollbar}
-        bordered={props.bordered}>
-        {/*  todo 菜单*/}
-      </NLayoutSider>
-    )
-  },
+    setup(props) {
+        return () => (
+            <NLayoutSider {...props}>
+                <Suspense>
+                    {{
+                        default: () => <SiderMenu />,
+                        fallback: () => 'Loading....',
+                    }}
+                </Suspense>
+            </NLayoutSider>
+        )
+    },
 })

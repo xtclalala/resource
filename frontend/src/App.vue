@@ -22,7 +22,10 @@ import {
                         <YLayout>
                             <!--              <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png" />-->
                             <!--              <HelloWorld />-->
-                            <Workbench />
+                            <Suspense>
+                                <Workbench />
+                                <template #fallback> Loading... </template>
+                            </Suspense>
                         </YLayout>
                     </n-notification-provider>
                 </n-dialog-provider>

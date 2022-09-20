@@ -1,19 +1,28 @@
 import shortid from 'shortid'
 import type { DirInfo, FileInfo } from '@/lib/types'
 import { CommandType } from '@/lib/types'
+import { IconType } from '@/type'
 
 export class FileWorker {
     readonly _id: string
-    #currentPath: string
-    #currentFile: FileInfo | undefined
-    #dirInfo: Array<DirInfo> = []
-    #command: CommandType
+    private _currentPath: string
+    private _currentFile: FileInfo | undefined
+    private _dirInfo: Array<DirInfo> = []
+    private _command: CommandType
+    private _icon: IconType
+    private _name = ''
 
-    constructor(currentPath: string, dirInfo: Array<DirInfo>, command: CommandType) {
+    constructor(
+        currentPath: string,
+        dirInfo: Array<DirInfo>,
+        command: CommandType,
+        icon: IconType
+    ) {
         this._id = shortid.generate()
-        this.#currentPath = currentPath
-        this.#dirInfo = dirInfo
-        this.#command = command
+        this._currentPath = currentPath
+        this._dirInfo = dirInfo
+        this._command = command
+        this._icon = icon
     }
 
     renderCommand(): string {
@@ -25,32 +34,48 @@ export class FileWorker {
     }
 
     get currentPath(): string {
-        return this.#currentPath
+        return this._currentPath
     }
     set currentPath(value: string) {
-        this.#currentPath = value
+        this._currentPath = value
     }
 
     get currentFile(): FileInfo | undefined {
-        return this.#currentFile
+        return this._currentFile
     }
     set currentFile(value: FileInfo | undefined) {
-        this.#currentFile = value
+        this._currentFile = value
     }
 
     get dirInfo(): Array<DirInfo> {
-        return this.#dirInfo
+        return this._dirInfo
     }
 
     set dirInfo(value: Array<DirInfo>) {
-        this.#dirInfo = value
+        this._dirInfo = value
     }
 
     get command(): CommandType {
-        return this.#command
+        return this._command
     }
 
     set command(value: CommandType) {
-        this.#command = value
+        this._command = value
+    }
+
+    get icon(): IconType {
+        return this._icon
+    }
+
+    set icon(value: IconType) {
+        this._icon = value
+    }
+
+    get name(): string {
+        return this._name
+    }
+
+    set name(value: string) {
+        this._name = value
     }
 }

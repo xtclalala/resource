@@ -1,19 +1,18 @@
 import { FileWorker } from '@/lib/FileWorker'
 import { warn } from '@/lib/log'
+import { WorkerBuilder } from '@/lib/Builder'
 
 export class FileManager {
-    #currentWorker: FileWorker
-    #works: Array<FileWorker> = []
+    private _currentWorker: FileWorker | undefined
+    private _works: Array<FileWorker> = []
     private static _Instance: FileManager
-    constructor(work: FileWorker) {
+    constructor() {
         FileManager._Instance = this
-        this.#works.push(work)
-        this.#currentWorker = work
     }
 
-    public static Instance(work: FileWorker): FileManager {
+    public static async Instance(): Promise<FileManager> {
         if (this._Instance === undefined) {
-            this._Instance = new FileManager(work)
+            this._Instance = new FileManager()
         }
         return this._Instance
     }
@@ -40,7 +39,7 @@ export class FileManager {
             warn(`not find currentWork, id: ${id}`)
             return false
         }
-        this.#works.splice(index, 1)
+        this._works.splice(index, 1)
         if (this.currentWorker.id === id) {
             this.currentWorker = this.works[-1]
         }
@@ -64,23 +63,28 @@ export class FileManager {
     }
 
     // getter and setter
-    get currentWorker(): FileWorker {
-        return this.#currentWorker
+    async getCurrentWorker(): Promise<FileWorker> {
+        if (this._currentWorker === undefined) {
+            const builder = await WorkerBuilder.Instance()
+            return builder.render(builder.config)
+        }
+        return this._currentWorker
     }
     set currentWorker(value: FileWorker) {
-        this.#currentWorker = value
+        this._currentWorker = value
+        this.setWorks = value
     }
 
     get works(): Array<FileWorker> {
-        return this.#works
+        return this._works
     }
 
     set setWorks(value: FileWorker) {
-        for (const work of this.#works) {
+        for (const work of this._works) {
             if (work.id === value.id) {
                 return
             }
         }
-        this.#works.push(value)
+        this._works.push(value)
     }
 }

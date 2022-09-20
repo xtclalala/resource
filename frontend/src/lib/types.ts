@@ -21,26 +21,16 @@ export type FileInfo = {
 export type osType = 'windows' | 'mac' | 'linux'
 
 export type ConfigType = {
-    windows: {
-        path: string
-        command: {
-            mode: ConfigModeType
-            value: CommandType
-        }
-    }
-    mac: {
-        path: string
-        command: {
-            mode: ConfigModeType
-            value: CommandType
-        }
-    }
-    linux: {
-        path: string
-        command: {
-            mode: ConfigModeType
-            value: CommandType
-        }
+    windows: BuilderConfigType
+    mac: BuilderConfigType
+    linux: BuilderConfigType
+}
+
+export type BuilderConfigType = {
+    path: string
+    command: {
+        mode: ConfigModeType
+        value: CommandType
     }
 }
 

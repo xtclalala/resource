@@ -3,4 +3,4 @@
 
 export function DirExists(arg1:string):Promise<boolean>;
 
-export function Os():Promise<'windows'| 'mac' | 'linux'>;
+export function Os():Promise<string>;
