@@ -3,16 +3,19 @@ import { useManager } from '@/hooks/useManager'
 import { NButton, NSpace } from 'naive-ui'
 import YIcon from '@/components/YIcon'
 import { useBuilder } from '@/hooks/useBuilder'
+import { useShort } from '@/hooks/useShort'
+import { IconType } from '@/type'
 
 export default defineComponent({
     name: 'SiderMenu',
     async setup() {
         const { init, manager } = await useManager()
         const { renderWorker } = await useBuilder()
+        const { ctrlAddW } = await useShort()
         if (manager.works.length === 0) {
             await init()
         }
-
+        ctrlAddW()
         return () => (
             <NSpace vertical>
                 {manager.works.map((work) => {
@@ -29,7 +32,9 @@ export default defineComponent({
                                     <YIcon
                                         size={24}
                                         iconType={
-                                            work.icon === undefined ? 'CodeSlashOutline' : work.icon
+                                            work.icon === undefined
+                                                ? ('CodeSlashOutline' as IconType)
+                                                : work.icon
                                         }
                                     />
                                 ),
@@ -41,10 +46,10 @@ export default defineComponent({
                     tertiary
                     round
                     onClick={async () => {
-                        await manager.addWork(await renderWorker())
+                        await manager.addWork(await renderWorker('FileView'))
                     }}>
                     {{
-                        icon: () => <YIcon size={24} iconType={'Add'} />,
+                        icon: () => <YIcon size={24} iconType={'Add' as IconType} />,
                     }}
                 </NButton>
             </NSpace>

@@ -1,6 +1,6 @@
 import { FileWorker } from '@/lib/FileWorker'
 import { warn } from '@/lib/log'
-import { WorkerBuilder } from '@/lib/Builder'
+import { useBuilder } from '@/hooks/useBuilder'
 
 export class FileManager {
     private _currentWorker: FileWorker | undefined
@@ -65,11 +65,12 @@ export class FileManager {
     // getter and setter
     async getCurrentWorker(): Promise<FileWorker> {
         if (this._currentWorker === undefined) {
-            const builder = await WorkerBuilder.Instance()
-            return builder.render(builder.config)
+            const { renderWorker } = await useBuilder()
+            return renderWorker('ComponentView')
         }
         return this._currentWorker
     }
+
     set currentWorker(value: FileWorker) {
         this._currentWorker = value
         this.setWorks = value

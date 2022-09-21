@@ -1,4 +1,8 @@
 import { ConfigModeEnum, DirTypeEnum } from '@/lib/constant'
+import FileView from '@/views/FileView'
+import FolderView from '@/views/FolderView'
+import CommandView from '@/views/CommandView'
+import { IconType } from '@/type'
 
 export type DirType = keyof typeof DirTypeEnum
 export type ConfigModeType = keyof typeof ConfigModeEnum
@@ -32,8 +36,11 @@ export type BuilderConfigType = {
         mode: ConfigModeType
         value: CommandType
     }
+    icon: IconType
 }
 
 export type CommandType = {
     [props in string]: string
 }
+
+export type ComponentType = typeof CommandView | typeof FolderView | typeof FileView

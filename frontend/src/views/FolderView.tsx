@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: 'Workbench',
+    name: 'FolderView',
     async setup() {
-        return () => <div>{'workbench'}</div>
+        return () => <div>{'FolderView'}</div>
     },
 })

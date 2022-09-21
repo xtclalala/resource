@@ -14,7 +14,7 @@ const PropsType = {
 export default defineComponent({
     name: 'YIcon',
     props: PropsType,
-    setup(props) {
+    async setup(props) {
         return () => <NIcon {...props} component={vIcons[props.iconType]}></NIcon>
     },
 })

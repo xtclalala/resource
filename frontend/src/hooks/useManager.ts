@@ -2,13 +2,22 @@ import { FileManager } from '@/lib/FileManager'
 import { useBuilder } from './useBuilder'
 import { reactive } from 'vue'
 
+let manager
+let renderWorker
+let init
 export const useManager = async () => {
-    const { builder } = await useBuilder()
+    if (renderWorker === undefined) {
+        renderWorker = (await useBuilder()).renderWorker
+    }
 
-    const manager = reactive<FileManager>(await FileManager.Instance())
+    if (manager === undefined) {
+        manager = reactive<FileManager>(await FileManager.Instance())
+    }
 
-    const init = () => {
-        manager.currentWorker = builder.render(builder.config)
+    if (init === undefined) {
+        init = async () => {
+            manager.currentWorker = await renderWorker('FileView')
+        }
     }
 
     return {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import YLayout from '@/layout/YLayout'
-import Workbench from '@/views/Workbench'
+import CtrlView from '@/views/CtrlView.vue'
 import { zhCN, lightTheme } from 'naive-ui'
 import {
     NGlobalStyle,
@@ -9,6 +9,7 @@ import {
     NDialogProvider,
     NNotificationProvider,
 } from 'naive-ui'
+
 </script>
 
 <template>
@@ -23,7 +24,8 @@ import {
                             <!--              <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png" />-->
                             <!--              <HelloWorld />-->
                             <Suspense>
-                                <Workbench />
+                                <!--                                <component :is="work.component" />-->
+                                <CtrlView />
                                 <template #fallback> Loading... </template>
                             </Suspense>
                         </YLayout>

@@ -1,7 +1,7 @@
 import { FileWorker } from '@/lib/FileWorker'
 import config from './config'
-import type { DirInfo } from '@/lib/types'
-import { BuilderConfigType, ConfigType, osType } from '@/lib/types'
+import type { ComponentType, DirInfo } from '@/lib/types'
+import type { BuilderConfigType, ConfigType, osType } from '@/lib/types'
 import { ConfigModeEnum } from '@/lib/constant'
 import { Os } from '../../wailsjs/go/main/App'
 
@@ -21,7 +21,7 @@ export class WorkerBuilder {
         return this._Instance
     }
 
-    render(config: BuilderConfigType): FileWorker {
+    render(config: BuilderConfigType, component: ComponentType): FileWorker {
         // 读 path 信息
         if (config.command.mode === ConfigModeEnum.marge) {
             // marge
@@ -30,7 +30,7 @@ export class WorkerBuilder {
         }
 
         const dirIndo: Array<DirInfo> = []
-        return new FileWorker(config.path, dirIndo, config.command.value, 'CodeSlashOutline')
+        return new FileWorker(config.path, dirIndo, config.command.value, config.icon, component)
     }
     get os(): osType {
         return this._os

@@ -1,6 +1,6 @@
 import shortid from 'shortid'
 import type { DirInfo, FileInfo } from '@/lib/types'
-import { CommandType } from '@/lib/types'
+import { CommandType, ComponentType } from '@/lib/types'
 import { IconType } from '@/type'
 
 export class FileWorker {
@@ -11,18 +11,21 @@ export class FileWorker {
     private _command: CommandType
     private _icon: IconType
     private _name = ''
+    private readonly _component: ComponentType
 
     constructor(
         currentPath: string,
         dirInfo: Array<DirInfo>,
         command: CommandType,
-        icon: IconType
+        icon: IconType,
+        component: ComponentType
     ) {
         this._id = shortid.generate()
         this._currentPath = currentPath
         this._dirInfo = dirInfo
         this._command = command
         this._icon = icon
+        this._component = component
     }
 
     renderCommand(): string {
@@ -77,5 +80,9 @@ export class FileWorker {
 
     set name(value: string) {
         this._name = value
+    }
+
+    get component(): () => Promise<any> {
+        return () => import(`../views/${this._component}`)
     }
 }

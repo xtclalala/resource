@@ -89,3 +89,15 @@ func (a *App) DirExists(path string) bool {
 func (a *App) Os() string {
 	return gorunrime.GOOS
 }
+
+func (a *App) ReadFile(path string) string {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return ""
+	}
+	return string(data)
+}
+
+func (a *App) WriteFile(value, path string) string {
+	return gorunrime.GOOS
+}

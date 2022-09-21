@@ -9,3 +9,11 @@ export function DirExists(arg1) {
 export function Os() {
   return window['go']['main']['App']['Os']();
 }
+
+export function ReadFile(arg1) {
+  return window['go']['main']['App']['ReadFile'](arg1);
+}
+
+export function WriteFile(arg1, arg2) {
+  return window['go']['main']['App']['WriteFile'](arg1, arg2);
+}
