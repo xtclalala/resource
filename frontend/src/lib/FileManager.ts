@@ -17,7 +17,7 @@ export class FileManager {
         return this._Instance
     }
 
-    async toWork(id: string) {
+    async toWork(id: string): Promise<boolean> {
         const work = await this.getWokeFromWorks(id)
         if (undefined === work) {
             warn(`not find currentWork, id: ${id}`)
@@ -66,7 +66,7 @@ export class FileManager {
     async getCurrentWorker(): Promise<FileWorker> {
         if (this._currentWorker === undefined) {
             const { renderWorker } = await useBuilder()
-            return renderWorker('ComponentView')
+            return renderWorker('FileView')
         }
         return this._currentWorker
     }

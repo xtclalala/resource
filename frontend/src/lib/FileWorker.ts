@@ -82,7 +82,7 @@ export class FileWorker {
         this._name = value
     }
 
-    get component(): () => Promise<any> {
-        return () => import(`../views/${this._component}`)
+    get component(): () => Promise<() => Promise<any>> {
+        return async () => await import(`../views/${this._component}`)
     }
 }

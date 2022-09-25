@@ -1,21 +1,32 @@
 import { defineComponent, ref } from 'vue'
-import { ReadFile } from '../../wailsjs/go/main/App'
-import { NButton } from 'naive-ui'
+import { ReadFile, WriteFile } from '../../wailsjs/go/main/App'
+import { NButton, NSpace, useMessage } from 'naive-ui'
+import { IsZero } from '@/Is'
 
 export default defineComponent({
     name: 'FileView',
+    props: {},
     async setup() {
         const data = ref<string>('')
-        const readConfigFile = async () => {
-            data.value = await ReadFile('dosc/config.json')
+        const readConfigFile = async () => (data.value = await ReadFile('dosc/config.json'))
+
+        const saveConfigFile = async () => {
+            const res = await WriteFile('dosc/config.json', data.value)
+            if (IsZero(res)) {
+                await readConfigFile()
+            } else {
+                const message = useMessage()
+                message.warning(res)
+            }
         }
-        // const writeConfigFile
+
+        await readConfigFile()
         return () => (
             <div>
-                {'FileView'}
-                <NButton onClick={readConfigFile}>{'读文件'}</NButton>
-                {data.value}
-                <textarea v-model={data.value}></textarea>
+                <NSpace justify={'end'}>
+                    <NButton onClick={saveConfigFile}>{'保存'}</NButton>
+                </NSpace>
+                <textarea v-model={data.value} style={{ width: '80vh', height: '80vh' }}></textarea>
             </div>
         )
     },

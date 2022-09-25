@@ -21,7 +21,9 @@ export default defineComponent({
                     />
 
                     <NLayout native-scrollbar={false}>
-                        <YContent content-style="min-height: calc(100vh - 128px)" embedded>
+                        <YContent
+                            content-style="min-height: calc(100vh - 128px);padding: 12px"
+                            embedded>
                             {slots.default && slots.default()}
                         </YContent>
                     </NLayout>

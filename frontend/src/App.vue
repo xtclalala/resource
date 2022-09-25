@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import YLayout from '@/layout/YLayout'
 import CtrlView from '@/views/CtrlView.vue'
+//@ts-ignore
 import { zhCN, lightTheme } from 'naive-ui'
 import {
     NGlobalStyle,
@@ -9,7 +10,6 @@ import {
     NDialogProvider,
     NNotificationProvider,
 } from 'naive-ui'
-
 </script>
 
 <template>

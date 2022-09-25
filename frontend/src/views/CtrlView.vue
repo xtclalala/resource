@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { useWorker } from '@/hooks/useWorker'
 
-const { work } = await useWorker()
-const component = (await work.component()).default
+const { component } = await useWorker()
 </script>
 
 <template>
