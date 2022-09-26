@@ -4,7 +4,9 @@ import { NButton, NDropdown, NSpace } from 'naive-ui'
 import YIcon from '@/components/YIcon'
 import { useBuilder } from '@/hooks/useBuilder'
 import { useShort } from '@/hooks/useShort'
-import { IconType } from '@/type'
+
+import { Add } from '@vicons/ionicons5'
+import * as iV from '@vicons/ionicons5'
 
 export default defineComponent({
     name: 'SiderMenu',
@@ -51,9 +53,11 @@ export default defineComponent({
                                     <YIcon
                                         size={24}
                                         iconType={
-                                            work.icon === undefined
-                                                ? ('CodeSlashOutline' as IconType)
-                                                : work.icon
+                                            iV[
+                                                work.icon === undefined
+                                                    ? 'CodeSlashOutline'
+                                                    : work.icon
+                                            ]
                                         }
                                     />
                                 ),
@@ -70,7 +74,7 @@ export default defineComponent({
                         // }}
                     >
                         {{
-                            icon: () => <YIcon size={24} iconType={'Add' as IconType} />,
+                            icon: () => <YIcon size={24} iconType={Add} />,
                         }}
                     </NButton>
                 </NDropdown>

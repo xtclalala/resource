@@ -14,11 +14,12 @@ export type DirInfo = {
 }
 
 export type FileInfo = {
-    name: string
-    size: string
-    power: string
-    createTime: string
-    updateTime: string
+    Dir: string
+    Name: string
+    Size: number
+    IsDir: boolean
+    Modtime: string
+    Extension: string
     //....
 }
 

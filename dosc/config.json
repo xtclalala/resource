@@ -2,5 +2,10 @@
   "windows": {
     "path": "C:/"
   },
-  "test":"测试"
+  "command": {
+    "value": {
+      "ls": "dir"
+    }
+  },
+  "icon": "CodeSlashOutline"
 }

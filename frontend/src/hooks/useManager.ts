@@ -16,7 +16,7 @@ export const useManager = async () => {
 
     if (init === undefined) {
         init = async () => {
-            manager.currentWorker = await renderWorker('FileView')
+            manager.currentWorker = await renderWorker('FolderView')
         }
     }
 

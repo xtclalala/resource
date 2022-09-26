@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { NIcon } from 'naive-ui'
-import * as vIcons from '@vicons/ionicons5'
 import { IconType } from '@/type'
 import { PropType } from 'vue'
 
@@ -15,6 +14,6 @@ export default defineComponent({
     name: 'YIcon',
     props: PropsType,
     async setup(props) {
-        return () => <NIcon {...props} component={vIcons[props.iconType]}></NIcon>
+        return () => <NIcon {...props} component={props.iconType}></NIcon>
     },
 })

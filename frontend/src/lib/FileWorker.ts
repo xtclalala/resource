@@ -2,6 +2,7 @@ import shortid from 'shortid'
 import type { DirInfo, FileInfo } from '@/lib/types'
 import { CommandType, ComponentType } from '@/lib/types'
 import { IconType } from '@/type'
+import { ReadDir } from '../../wailsjs/go/main/App'
 
 export class FileWorker {
     readonly _id: string
@@ -26,6 +27,13 @@ export class FileWorker {
         this._command = command
         this._icon = icon
         this._component = component
+    }
+
+    async readDir(path?: string) {
+        const p = path === undefined ? this.currentPath : this.currentPath + path + '/'
+        console.log('p', p)
+        this.dirInfo = await ReadDir(p)
+        this.currentPath = p
     }
 
     renderCommand(): string {
